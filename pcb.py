@@ -17,7 +17,7 @@ for x in range(len(Processes)):
     total_time += Processes[x][3] 
     
 def ready_queue(arrival_time):
-    if(arrival_time<=4):
+    if(arrival_time<=len(Processes)-1):
         for x in range(len(Processes)):
             if(Processes[x][2]==arrival_time):
                 RQ.append(Processes[x])
@@ -47,7 +47,7 @@ while(count<=total_time):
                 p[3] = 0
                 p[4] = 'No instruction left'
                 c = QN
-                p[5] = count
+                p[5] = count+QN-1
             elif(p[3]-QN<0):
                 print(f'{p[1]} => {p[3]} instruction was executed => Task finished')
                 c = p[3]
@@ -74,5 +74,5 @@ pcb['Utilization']=[str(round((x/y)*100,2))+'%' for x,y in zip(pcb['Execution Ti
 df = pd.DataFrame(pcb)
 
 print(tabulate(df,headers=df.columns,showindex=False,tablefmt='fancy_grid'))
-print('Average Turn Around Time = ',np.average(pcb['Turn Around Time']))
-print('Average Wait Time        = ',np.average(pcb['Wait Time']))
+print('Average Turn Around Time = ',round(np.average(pcb['Turn Around Time']),2))
+print('Average Wait Time        = ',round(np.average(pcb['Wait Time']),2))
