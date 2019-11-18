@@ -56,8 +56,8 @@ while(count<=total_time):
                 p[5] = count
         pcb(p[0],p[4],p[1])
         for x in range(c):
+            ready_queue(count)
             count +=1
-            ready_queue(count-1)
         if(p[3]>0):
             RQ.append(p)
 
